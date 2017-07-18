@@ -2,7 +2,7 @@
 set -e
 
 chmod +x /parseurl.py
-# /parseurl.py ETHERPAD_DB_
+/parseurl.py ETHERPAD_DB_
 eval $(/parseurl.py ETHERPAD_DB_)
 
 # ETHERPAD_DB_PASSWORD is mandatory in mysql container, so we're not offering
