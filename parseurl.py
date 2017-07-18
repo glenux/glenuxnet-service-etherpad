@@ -18,19 +18,19 @@ db_host = None
 db_port = None
 
 if db_netloc.find("@") >= 0 :
-	tmp_arr = db_netloc.split('@')
-	db_credential = tmp_arr[0]
-	db_host = tmp_arr[1]
+  tmp_arr1 = db_netloc.split('@')
+  db_credential = tmp_arr1[0]
+  db_host = tmp_arr1[1]
 
 if db_credential and db_credential.find(':') >= 0 :
-	tmp_arr = db_credential.split(':')
-	db_username = tmp_arr[0]
-	db_password = tmp_arr[1]
+  tmp_arr2 = db_credential.split(':')
+  db_username = tmp_arr2[0]
+  db_password = tmp_arr2[1]
 
 if db_host and db_host.find(':') >= 0 :
-	tmp_arr = db_credential.split(':')
-	db_host = tmp_arr[0]
-	db_port = tmp_arr[1]
+  tmp_arr3 = db_host.split(':')
+  db_host = tmp_arr3[0]
+  db_port = tmp_arr3[1]
 
 db_path = uri.path
 db_scheme = uri.scheme 
