@@ -53,7 +53,7 @@ if db_port :
   print(prefix +  'PORT=' + db_port)
 
 if db_path :
-  print(prefix + 'PATH=' + db_path)
+  print(prefix + 'DATABASE=' + db_path)
 
 if db_query :
   print(prefix + 'QUERY=' + db_query)
