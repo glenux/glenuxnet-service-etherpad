@@ -5,19 +5,59 @@ import os
 from urlparse import urlparse
 
 prefix = sys.argv[1]
-uri = os.environ['DATABASE_URL']
-result = urlparse(uri)
-credential, machine = result.netloc.split('@')
-username, password = credential.split(':')
-host, port = machine.split(':')
-path = result.path
+# print os.environ.keys
+uri_str = os.environ['DATABASE_URL']
+uri = urlparse(uri_str)
 
-print(prefix, 'SCHEME=', result.scheme)
-print(prefix, 'USERNAME=', username)
-print(prefix, 'PASSWORD=', password)
-print(prefix, 'HOST=', host)
-print(prefix, 'PORT=', port)
-print(prefix, 'PATH=', path)
-print(prefix, 'QUERY=', result.query)
-print(prefix, 'FRAGMENT=', result.fragment)
+db_netloc = uri.netloc 
+
+db_credential = None
+db_username = None
+db_password = None
+db_host = None
+db_port = None
+
+if db_netloc.find("@") >= 0 :
+	tmp_arr = db_netloc.split('@')
+	db_credential = tmp_arr[0]
+	db_host = tmp_arr[1]
+
+if db_credential and db_credential.find(':') >= 0 :
+	tmp_arr = db_credential.split(':')
+	db_username = tmp_arr[0]
+	db_password = tmp_arr[1]
+
+if db_host and db_host.find(':') >= 0 :
+	tmp_arr = db_credential.split(':')
+	db_host = tmp_arr[0]
+	db_port = tmp_arr[1]
+
+db_path = uri.path
+db_scheme = uri.scheme 
+db_query = uri.query
+db_fragment = uri.fragment
+
+if db_scheme :
+  print(prefix + 'SCHEME=' + db_scheme)
+
+if db_username :
+  print(prefix + 'USERNAME=' + db_username)
+
+if db_password :
+  print(prefix + 'PASSWORD=' + db_password)
+
+if db_host :
+  print(prefix + 'HOST=' + db_host)
+
+if db_port :
+  print(prefix +  'PORT=' + db_port)
+
+if db_path :
+  print(prefix + 'PATH=' + db_path)
+
+if db_query :
+  print(prefix + 'QUERY=' + db_query)
+
+if db_fragment :
+  print(prefix + 'FRAGMENT=' + db_fragment)
 

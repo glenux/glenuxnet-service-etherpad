@@ -22,6 +22,7 @@ WORKDIR etherpad-lite
 RUN bin/installDeps.sh && rm settings.json
 COPY entrypoint.sh /entrypoint.sh
 COPY parseurl.py /parseurl.py
+RUN chmod +x /entrypoint.sh
 
 RUN sed -i 's/^node/exec\ node/' bin/run.sh
 
