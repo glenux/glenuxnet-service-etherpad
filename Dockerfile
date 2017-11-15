@@ -29,7 +29,7 @@ RUN sed -i 's/^node/exec\ node/' bin/run.sh
 VOLUME /opt/etherpad-lite/var
 RUN ln -s var/settings.json settings.json
 
-RUN npm install ep_author_neat ep_headings2 ep_set_title_on_pad
+RUN npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads
 
 EXPOSE 9001
 ENTRYPOINT ["/entrypoint.sh"]
