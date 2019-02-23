@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: mariadb:10.3
+    volumes:
+      - ./data/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: insecure
+      MYSQL_DATABASE: etherpad
+
+  etherpad:
+    build: .
+    environment:
+      DATABASE_URL: mysql://root:insecure@db/etherpad
+      ETHERPAD_ADMIN_USER: admin
+      ETHERPAD_ADMIN_PASSWORD: insecure
+      NODE_ENV: production
+    ports:
+      - "9001:9001"
+    depends_on:
+      - "db"
+
+#   volumes:
+#  - data/etherpad:/var/www/html/documents
+

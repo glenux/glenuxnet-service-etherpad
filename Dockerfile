@@ -1,12 +1,12 @@
 
 # Stable version of etherpad doesn't support npm 2
-FROM debian:jessie
-MAINTAINER Tony Motakis <tvelocity@gmail.com>
+FROM node:11-slim
+MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
-ENV ETHERPAD_VERSION 1.6.1
+ENV ETHERPAD_VERSION 1.7.5
 
 RUN apt-get update && \
-    apt-get install -y curl unzip nodejs-legacy npm mysql-client && \
+    apt-get install -y curl unzip mysql-client python netcat && \
     rm -r /var/lib/apt/lists/*
 
 WORKDIR /opt/
@@ -17,20 +17,20 @@ RUN curl -SL \
     rm etherpad.zip && \
     mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
 
-WORKDIR etherpad-lite
+WORKDIR /opt/etherpad-lite
 
-RUN bin/installDeps.sh && rm settings.json
-COPY entrypoint.sh /entrypoint.sh
 COPY parseurl.py /parseurl.py
-RUN chmod +x /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-RUN sed -i 's/^node/exec\ node/' bin/run.sh
+# Pre-install 
+RUN bin/installDeps.sh && rm settings.json && \
+    chmod +x /entrypoint.sh && \
+    sed -i 's/^node/exec\ node/' bin/run.sh && \
+    ln -s var/settings.json settings.json && \
+    npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads ep_mypads
 
 VOLUME /opt/etherpad-lite/var
-RUN ln -s var/settings.json settings.json
-
-RUN npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads
-
 EXPOSE 9001
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bin/run.sh", "--root"]
+
