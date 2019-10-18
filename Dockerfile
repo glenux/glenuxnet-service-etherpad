@@ -28,9 +28,7 @@ RUN bin/installDeps.sh && rm settings.json && \
     chmod +x /entrypoint.sh && \
     sed -i 's/^node/exec\ node/' bin/run.sh && \
     ln -s var/settings.json settings.json && \
-    npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads ep_mypads ep_padwiki
-
-#     npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads ep_mypads ep_padwiki ep_comments_page
+    npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads ep_mypads ep_padwiki ep_comments_page
 
 VOLUME /opt/etherpad-lite/var
 EXPOSE 9001
