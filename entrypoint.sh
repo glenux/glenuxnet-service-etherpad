@@ -72,6 +72,7 @@ if ! [ -f settings.json ]; then
 	  "title": "${ETHERPAD_TITLE}",
 	  "ip": "0.0.0.0",
 	  "port" :${ETHERPAD_PORT},
+	  "skinName": "colibris",
 	  "sessionKey" : "${ETHERPAD_SESSION_KEY}",
 	  "dbType" : "mysql",
 	  "dbSettings" : {
