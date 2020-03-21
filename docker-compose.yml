@@ -1,9 +1,11 @@
-version: "3"
+---
+version: "3.4"
+
 services:
   db:
     image: mariadb:10.3
     volumes:
-      - ./data/db:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: insecure
       MYSQL_DATABASE: etherpad
@@ -20,6 +22,5 @@ services:
     depends_on:
       - "db"
 
-#   volumes:
-#  - data/etherpad:/var/www/html/documents
-
+volumes:
+  db_data: {}
