@@ -29,6 +29,7 @@ RUN bin/installDeps.sh && rm settings.json \
  && ln -s var/settings.json settings.json \
  && npm install ep_author_neat ep_headings2 ep_set_title_on_pad ep_adminpads ep_mypads ep_padwiki ep_comments_page
 
+# meta-données
 VOLUME /opt/etherpad-lite/var
 EXPOSE 9001
 ENTRYPOINT ["/entrypoint.sh"]
