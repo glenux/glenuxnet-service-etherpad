@@ -1,5 +1,5 @@
 # Stable version of etherpad doesn't support npm 2
-FROM node:13-slim
+FROM node:12-slim
 MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
 ENV ETHERPAD_VERSION 1.8.4
