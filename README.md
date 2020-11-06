@@ -1,5 +1,6 @@
 # Etherpad Lite image for docker
 
+
 This is a docker image for [Etherpad Lite](http://etherpad.org/) collaborative
 text editor. The Dockerfile for this image has been inspired by the
 [official Wordpress](https://registry.hub.docker.com/_/wordpress/) Dockerfile and
