@@ -2,7 +2,7 @@
 FROM node:12-slim
 MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
-ENV ETHERPAD_VERSION 1.8.4
+ENV ETHERPAD_VERSION 1.8.6
 
 # RUN = docker run ... + docker commit 
 RUN apt-get update && \
