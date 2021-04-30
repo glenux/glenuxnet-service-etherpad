@@ -24,11 +24,14 @@ COPY parseurl.py /parseurl.py
 COPY entrypoint.sh /entrypoint.sh
 
 # Pre-install 
+CMD /bin/bash
+
 RUN bin/installDeps.sh && rm settings.json \
  && chmod +x /entrypoint.sh \
  && sed -i 's/^node/exec\ node/' bin/run.sh \
  && ln -s var/settings.json settings.json \
- && npm install \
+ && cd src \
+ && npm install -D \
  	ep_author_neat ep_headings2 \
  	ep_set_title_on_pad ep_adminpads \
  	ep_workspaces ep_comments_page \
