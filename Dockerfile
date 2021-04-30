@@ -36,6 +36,7 @@ RUN bin/installDeps.sh && rm settings.json \
  	ep_workspaces ep_comments_page \
  	ep_font_color ep_table_of_contents \
  	ep_delete_after_delay \
+ 	ep_offline_edit \
  	ep_prompt_for_name
 
 # ep_mypads 
