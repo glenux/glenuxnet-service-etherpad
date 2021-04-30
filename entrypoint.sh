@@ -74,12 +74,16 @@ if ! [ -f settings.json ]; then
 	  "port" :${ETHERPAD_PORT},
 	  "skinName": "colibris",
 	  "sessionKey" : "${ETHERPAD_SESSION_KEY}",
+	  "trustProxy" : false,
+	  "minify" : true,
+	  "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nIMPORTANT: this pad will be deleted after 30 days. Please don't consider it as document storage."
 	  "dbType" : "mysql",
 	  "dbSettings" : {
 			    "user"    : "${ETHERPAD_DB_USERNAME}",
 			    "host"    : "${ETHERPAD_DB_HOST}",
 			    "password": "${ETHERPAD_DB_PASSWORD}",
-			    "database": "${ETHERPAD_DB_NAME}"
+			    "database": "${ETHERPAD_DB_NAME}",
+				"charset":  "utf8mb4"
 			  },
 	EOF
 
