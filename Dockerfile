@@ -7,7 +7,7 @@ ENV ETHERPAD_VERSION 1.8.13
 
 # RUN = docker run ... + docker commit 
 RUN apt-get update && \
-    apt-get install -y curl unzip mysql-client python netcat && \
+    apt-get install -y curl unzip mariadb-client python netcat && \
     rm -r /var/lib/apt/lists/*
 
 WORKDIR /opt/
