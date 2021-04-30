@@ -76,7 +76,7 @@ if ! [ -f settings.json ]; then
 	  "sessionKey" : "${ETHERPAD_SESSION_KEY}",
 	  "trustProxy" : false,
 	  "minify" : true,
-	  "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nIMPORTANT: this pad will be deleted after 30 days. Please don't consider it as document storage."
+	  "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nIMPORTANT: this pad will be deleted after 30 days. Please don't consider it as document storage.",
 	  "dbType" : "mysql",
 	  "dbSettings" : {
 			    "user"    : "${ETHERPAD_DB_USERNAME}",
