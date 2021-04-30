@@ -12,6 +12,7 @@ services:
 
   etherpad:
     build: .
+    image: glenux/etherpad:latest
     environment:
       DATABASE_URL: mysql://root:insecure@db/etherpad
       ETHERPAD_ADMIN_USER: admin
