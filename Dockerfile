@@ -1,6 +1,6 @@
 # Stable version of etherpad doesn't support npm 2
 
-FROM node:12-slim
+FROM node:16-slim
 MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
 ENV ETHERPAD_VERSION 1.8.13
@@ -30,13 +30,12 @@ RUN bin/installDeps.sh && rm settings.json \
  && chmod +x /entrypoint.sh \
  && sed -i 's/^node/exec\ node/' bin/run.sh \
  && ln -s var/settings.json settings.json \
- && cd src \
- && npm install -D \
+ && npm install \
  	ep_author_neat ep_headings2 \
  	ep_set_title_on_pad ep_adminpads \
  	ep_workspaces ep_comments_page \
  	ep_font_color ep_table_of_contents \
- && npm audit fix
+ 	ep_delete_after_delay
 
 # ep_mypads 
 
