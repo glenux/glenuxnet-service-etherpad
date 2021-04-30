@@ -82,8 +82,7 @@ if ! [ -f settings.json ]; then
 			    "user"    : "${ETHERPAD_DB_USERNAME}",
 			    "host"    : "${ETHERPAD_DB_HOST}",
 			    "password": "${ETHERPAD_DB_PASSWORD}",
-			    "database": "${ETHERPAD_DB_NAME}",
-				"charset":  "utf8mb4"
+			    "database": "${ETHERPAD_DB_NAME}"
 			  },
 	EOF
 
