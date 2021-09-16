@@ -1,22 +1,23 @@
 # Stable version of etherpad doesn't support npm 2
 
-FROM node:12
+FROM node:16
 MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
 ENV ETHERPAD_VERSION 1.8.13
 
 # RUN = docker run ... + docker commit 
-RUN apt-get update && \
-    apt-get install -y curl unzip mariadb-client python netcat && \
-    rm -r /var/lib/apt/lists/*
+RUN apt-get update \
+ && apt-get install -y curl unzip mariadb-client python netcat \
+ && apt-get clean \
+ && rm -r /var/lib/apt/lists/*
 
 WORKDIR /opt/
 
 RUN curl -SL \
     https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
-    > etherpad.zip && unzip etherpad && \
-    rm etherpad.zip && \
-    mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
+    > etherpad.zip && unzip etherpad \
+ && rm etherpad.zip \
+ && mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
 
 WORKDIR /opt/etherpad-lite
 
