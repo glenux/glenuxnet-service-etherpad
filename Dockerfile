@@ -1,9 +1,9 @@
 # Stable version of etherpad doesn't support npm 2
 
-FROM node:16
+FROM node:18.1
 MAINTAINER Glenn Y. Rolland <glenux@glenux.net>
 
-ENV ETHERPAD_VERSION 1.8.13
+ENV ETHERPAD_VERSION 1.8.18
 
 # RUN = docker run ... + docker commit 
 RUN apt-get update \
