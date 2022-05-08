@@ -105,13 +105,13 @@ EOF
 fi
 
 if ! grep -q '/* GLENUX BEGIN */' src/static/css/pad.css ; then
-	cat >> src/static/css/pad.css <<-MARK
-	/* GLENUX BEGIN */
-	body#innerdocbody {
-  		font-size: 16px;
-  		line-height: 20px
-	}
-	MARK
+  cat >> src/static/css/pad.css <<- MARK
+  /* GLENUX BEGIN */
+  body#innerdocbody {
+      font-size: 16px;
+      line-height: 20px
+  }
+MARK
 fi
 
 exec "$@"
