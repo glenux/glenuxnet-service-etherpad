@@ -22,7 +22,6 @@ if [ -z "$ETHERPAD_DB_PASS" ]; then
   exit 1
 fi
 
-RANDOM_STRING="$(node -p "require('crypto').randomBytes(32).toString('hex')")}"
 
 # Sanitize DB information
 ETHERPAD_DB_HOST="${ETHERPAD_DB_HOST:-}"
@@ -30,7 +29,6 @@ ETHERPAD_DB_PORT="${ETHERPAD_DB_PORT:-3306}"
 
 # Sanitize etherpad info
 ETHERPAD_PORT="${ETHERPAD_PORT:-9001}"
-ETHERPAD_SESSION_KEY="${ETHERPAD_SESSION_KEY:-$RANDOM_STRING}"
 ETHERPAD_TITLE="${ETHERPAD_TITLE:-Etherpad}"
 
 # Wait for database
@@ -71,7 +69,6 @@ if ! [ -f settings.json ]; then
     "ip": "0.0.0.0",
     "port" :${ETHERPAD_PORT},
     "skinName": "colibris",
-    "sessionKey" : "${ETHERPAD_SESSION_KEY}",
     "trustProxy" : false,
     "minify" : true,
     "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nIMPORTANT: this pad will be deleted after 30 days. Please don't consider it as document storage.",
