@@ -96,6 +96,10 @@ EOF
   fi
 
   cat <<- EOF >> settings.json
+    "ep_expiration" : {
+          "enabled": true,
+          "max_days": 30
+    }
   }
 EOF
 fi
