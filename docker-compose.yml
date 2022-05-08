@@ -4,24 +4,25 @@ version: "3.4"
 services:
   db:
     image: mariadb:10.3
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: insecure
-      MYSQL_DATABASE: etherpad
+      MARIADB_ROOT_PASSWORD: insecure
+      MARIADB_DATABASE: etherpad
 
   etherpad:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: glenux/etherpad:latest
     environment:
-      DATABASE_URL: mysql://root:insecure@db/etherpad
+      DATABASE_URL: mysql://root:insecure:3306@db/etherpad
       ETHERPAD_ADMIN_USER: admin
       ETHERPAD_ADMIN_PASSWORD: insecure
       NODE_ENV: production
     ports:
-      - "9001:9001"
-    depends_on:
-      - "db"
+      - 9001:9001
 
 volumes:
   db_data: {}
