@@ -6,10 +6,19 @@ TAG:=$(shell TZ=UTC date +"%Y%m%d")
 all: 
 
 build:
-	docker build -t $(USERNAME)/$(IMAGE):$(TAG) .
+	docker-compose build 
 
 run:
-	# remplir ici
+	docker-compose up --detach
+
+logs:
+	docker-compose logs -f
+
+shell:
+	docker-compose exec etherpad bash
+
+kill:
+	docker-compose kill
 
 test: build
 	# remplir ici
